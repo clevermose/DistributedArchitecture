@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>DistributedArchitecture</groupId>
+    <artifactId>DistributedArchitecture</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    
+    <dependencies>
+        <!-- Hessian序列化依赖 -->
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>4.0.7</version>
+        </dependency>
+        
+    </dependencies>
+    
+    <!-- 
+    <repositories>
+        <repository>
+            <id>maven-net-cn</id>  
+            <name>Maven China Mirror</name>  
+            <url>http://maven.wso2.org/nexus/content/groups/public/</url>  
+            <releases>  
+                <enabled>true</enabled>  
+            </releases>  
+            <snapshots>  
+                <enabled>false</enabled>  
+            </snapshots>
+        </repository>
+    </repositories>
+     -->
+</project>
