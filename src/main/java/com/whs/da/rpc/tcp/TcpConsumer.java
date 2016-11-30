@@ -14,7 +14,7 @@ import com.whs.da.rpc.SayHelloService;
  * @author haiswang
  *
  */
-public class Consumer {
+public class TcpConsumer {
     
     //RPC服务端的IP
     private String ip;
@@ -34,7 +34,7 @@ public class Consumer {
      * @param ip
      * @param port
      */
-    public Consumer(String ip, int port) {
+    public TcpConsumer(String ip, int port) {
         this.ip = ip;
         this.port = port;
     }
@@ -102,7 +102,7 @@ public class Consumer {
      * @param args
      */
     public static void main(String[] args) {
-        Consumer consumer = new Consumer("127.0.0.1", 8899);
+        TcpConsumer consumer = new TcpConsumer("127.0.0.1", 8899);
         Object result = null;
         
         try {

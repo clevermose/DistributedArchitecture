@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
  * @author haiswang
  *
  */
-public class Provider {
+public class TcpProvider {
     
     //RPC服务监听端口
     private int port;
@@ -34,7 +34,7 @@ public class Provider {
      * 构造函数
      * @param port
      */
-    public Provider(int port) {
+    public TcpProvider(int port) {
         this(port, DEFAULT_HANDLE_THREAD_POOL_SIZE);
     }
     
@@ -43,7 +43,7 @@ public class Provider {
      * @param port
      * @param handleThreadPoolSize
      */
-    public Provider(int port, int handleThreadPoolSize) {
+    public TcpProvider(int port, int handleThreadPoolSize) {
         this.handleThreadPoolSize = handleThreadPoolSize;
         this.port = port;
     }
@@ -85,7 +85,7 @@ public class Provider {
     }
     
     public static void main(String[] args) {
-        Provider rpcProvider = new Provider(8899);
+        TcpProvider rpcProvider = new TcpProvider(8899);
         try {
             rpcProvider.initRPCServer();
         } catch (IOException e) {
