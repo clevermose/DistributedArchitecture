@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.whs.da.service.loadbalance.ServerNode;
+import com.whs.da.service.loadbalance.ServiceServerNode;
 import com.whs.da.service.loadbalance.intf.ServiceLoadBalance;
 
 /**
@@ -23,20 +23,20 @@ public class WeightRoundRobinLoadBalance implements ServiceLoadBalance {
     }
     
     @Override
-    public ServerNode handleServiceNode(Map<ServerNode, Integer> serverNodes) {
+    public ServiceServerNode handleServiceNode(Map<ServiceServerNode, Integer> serverNodes) {
         //这边将所有的节点Copy出来,避免线程安全问题(服务的上线与下线会修改这个集合,出现遍历异常问题)
-        Map<ServerNode, Integer> serverMap = new HashMap<ServerNode, Integer>();
+        Map<ServiceServerNode, Integer> serverMap = new HashMap<ServiceServerNode, Integer>();
         serverMap.putAll(serverNodes);
         
-        List<ServerNode> serverNodeList = new ArrayList<>();
-        for (Map.Entry<ServerNode, Integer> entry : serverMap.entrySet()) {
+        List<ServiceServerNode> serverNodeList = new ArrayList<>();
+        for (Map.Entry<ServiceServerNode, Integer> entry : serverMap.entrySet()) {
             int weight = entry.getValue();
             for(int i=0; i<weight; i++) {
                 serverNodeList.add(entry.getKey());
             }
         }
         
-        ServerNode returnServerNode = null;
+        ServiceServerNode returnServerNode = null;
         
         synchronized (currentPos) {
             if(currentPos >= serverNodeList.size()) {

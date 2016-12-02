@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import com.whs.da.service.loadbalance.ServerNode;
+import com.whs.da.service.loadbalance.ServiceServerNode;
 import com.whs.da.service.loadbalance.intf.ServiceLoadBalance;
 
 /**
@@ -18,14 +18,14 @@ import com.whs.da.service.loadbalance.intf.ServiceLoadBalance;
 public class RandomLoadBalance implements ServiceLoadBalance {
 
     @Override
-    public ServerNode handleServiceNode(Map<ServerNode, Integer> serverNodes) {
+    public ServiceServerNode handleServiceNode(Map<ServiceServerNode, Integer> serverNodes) {
         
         //这边将所有的节点Copy出来,避免线程安全问题(服务的上线与下线会修改这个集合,出现遍历异常问题)
-        Map<ServerNode, Integer> serverMap = new HashMap<ServerNode, Integer>();
+        Map<ServiceServerNode, Integer> serverMap = new HashMap<ServiceServerNode, Integer>();
         serverMap.putAll(serverNodes);
         
-        Set<ServerNode> nodes = serverMap.keySet();
-        ArrayList<ServerNode> serverNodeList = new ArrayList<>();
+        Set<ServiceServerNode> nodes = serverMap.keySet();
+        ArrayList<ServiceServerNode> serverNodeList = new ArrayList<>();
         serverNodeList.addAll(nodes);
         
         //产生一个随机数

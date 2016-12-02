@@ -2,7 +2,7 @@ package com.whs.da.service.loadbalance.intf;
 
 import java.util.Map;
 
-import com.whs.da.service.loadbalance.ServerNode;
+import com.whs.da.service.loadbalance.ServiceServerNode;
 
 /**
  * 服务的负载均衡接口
@@ -16,6 +16,6 @@ public interface ServiceLoadBalance {
      * @param serverNodes
      * @return
      */
-    public ServerNode handleServiceNode(Map<ServerNode, Integer> serverNodes);
+    public ServiceServerNode handleServiceNode(Map<ServiceServerNode, Integer> serverNodes);
     
 }

@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-import com.whs.da.service.loadbalance.ServerNode;
+import com.whs.da.service.loadbalance.ServiceServerNode;
 import com.whs.da.service.loadbalance.intf.ServiceLoadBalance;
 
 /**
@@ -25,14 +25,14 @@ public class HashLoadBalance implements ServiceLoadBalance {
     }
     
     @Override
-    public ServerNode handleServiceNode(Map<ServerNode, Integer> serverNodes) {
+    public ServiceServerNode handleServiceNode(Map<ServiceServerNode, Integer> serverNodes) {
         
       //这边将所有的节点Copy出来,避免线程安全问题(服务的上线与下线会修改这个集合,出现遍历异常问题)
-        Map<ServerNode, Integer> serverMap = new HashMap<ServerNode, Integer>();
+        Map<ServiceServerNode, Integer> serverMap = new HashMap<ServiceServerNode, Integer>();
         serverMap.putAll(serverNodes);
         
-        Set<ServerNode> nodes = serverMap.keySet();
-        ArrayList<ServerNode> serverNodeList = new ArrayList<>();
+        Set<ServiceServerNode> nodes = serverMap.keySet();
+        ArrayList<ServiceServerNode> serverNodeList = new ArrayList<>();
         serverNodeList.addAll(nodes);
         
         //通过client ip的hashcode 定位具体Server

@@ -5,11 +5,18 @@ package com.whs.da.service.loadbalance;
  * @author haiswang
  *
  */
-public class ServerNode {
+public class ServiceServerNode {
     
     private String ip;
     
     private int port;
+    
+    public ServiceServerNode() {}
+    
+    public ServiceServerNode(String ip, int port) {
+        this.ip = ip;
+        this.port = port;
+    }
 
     public String getIp() {
         return ip;
@@ -25,6 +32,10 @@ public class ServerNode {
 
     public void setPort(int port) {
         this.port = port;
+    }
+    
+    public String toTxt() {
+        return ip + ":" + port;
     }
     
     @Override
